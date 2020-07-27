@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_constraint_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context=".MainActivityUserInterfaceAndLogic.MainActivity">
+
+
+    <TextView
+        android:id="@+id/application_title_text_view"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Integration"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/menu_delete_all"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/menu_delete_all" />
+
+
+    <ImageButton
+        android:id="@+id/switch_lang_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_swap_vert_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/menu_restart"
+        app:layout_constraintEnd_toStartOf="@+id/menu_restart"
+        app:layout_constraintTop_toTopOf="@+id/menu_restart" />
+
+    <ImageButton
+        android:id="@+id/menu_restart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_autorenew_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/menu_delete_all"
+        app:layout_constraintEnd_toStartOf="@+id/menu_delete_all"
+        app:layout_constraintTop_toTopOf="@+id/menu_delete_all" />
+
+
+    <ImageButton
+        android:id="@+id/menu_delete_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_delete_forever_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_view_empty_recycle_view"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="389dp"
+        android:layout_height="195dp"
+        android:gravity="center"
+        android:text="Add questions please"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler_view_questions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/recycler_view_questions"
+        app:layout_constraintTop_toTopOf="@+id/recycler_view_questions" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_questions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/edittext_answering"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_wins" />
+
+
+    <EditText
+        android:id="@+id/edittext_answering"
+        android:layout_width="match_parent"
+        android:layout_height="127dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:hint="answer"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:padding="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/button_submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view_questions" />
+
+
+    <ImageButton
+        android:id="@+id/button_submit"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:onClick="submitButton"
+
+        android:src="@drawable/ic_check_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/lock_switch"
+        app:layout_constraintStart_toEndOf="@+id/button_say_it"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_answering" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:onClick="addingQuestionButton"
+        android:src="@drawable/ic_add_black_24dp"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="@+id/button_submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button_submit" />
+
+
+    <TextView
+        android:id="@+id/textview_wins"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="0"
+        android:textColor="#090"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view_questions"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/application_title_text_view" />
+
+
+    <TextView
+        android:id="@+id/textview_losses"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="0"
+        android:textColor="#900"
+        app:layout_constraintBottom_toBottomOf="@+id/textview_wins"
+        app:layout_constraintStart_toEndOf="@+id/textview_wins"
+        app:layout_constraintTop_toTopOf="@+id/textview_wins" />
+
+
+    <ImageButton
+        android:id="@+id/button_say_it"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:enabled="false"
+        android:onClick="sayItButton"
+        android:src="@drawable/ic_speaker_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button_submit"
+        app:layout_constraintEnd_toStartOf="@+id/button_submit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button_submit" />
+
+
+    <Spinner
+        android:id="@+id/spinner_lessons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textview_losses"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textview_losses" />
+
+    <TextView
+        android:id="@+id/remaining"
+        style="@style/TextAppearance.AppCompat.Large"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@+id/textview_losses"
+        app:layout_constraintStart_toEndOf="@+id/textview_losses"
+        app:layout_constraintTop_toTopOf="@+id/textview_losses" />
+
+    <TextView
+        android:id="@+id/textView_current_item_position"
+        style="@style/TextAppearance.AppCompat.Large"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/0"
+        app:layout_constraintBottom_toBottomOf="@+id/remaining"
+        app:layout_constraintStart_toEndOf="@+id/remaining"
+        app:layout_constraintTop_toTopOf="@+id/remaining" />
+
+    <ToggleButton
+        android:id="@+id/lock_switch"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:onClick="lockSwitch"
+        android:text="eee"
+
+        android:textColor="#000"
+        app:layout_constraintBottom_toBottomOf="@+id/button_submit"
+        app:layout_constraintEnd_toStartOf="@+id/button_add"
+        app:layout_constraintTop_toTopOf="@+id/button_submit" />
+
+    <EditText
+        android:id="@+id/lock_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:cursorVisible="false"
+        android:ems="2"
+        android:gravity="center"
+
+        android:inputType="number"
+        android:padding="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/remaining"
+        app:layout_constraintStart_toEndOf="@+id/textView_current_item_position"
+        app:layout_constraintTop_toTopOf="@+id/textView_current_item_position" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="9dp"
+        app:layout_constraintBottom_toBottomOf="@+id/switch_lang_image_button"
+        app:layout_constraintEnd_toStartOf="@+id/switch_lang_image_button" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="2"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/switch1"
+        app:layout_constraintEnd_toStartOf="@+id/switch1"
+        app:layout_constraintTop_toTopOf="@+id/switch1" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

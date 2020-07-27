@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:title="switch_lang"
+        android:id="@+id/menu_switch_lang"
+        android:onClick="switchLang"
+        android:icon="@drawable/ic_swap_vert_black_24dp"
+        app:showAsAction="ifRoom"
+
+        />
+
+    <item
+        android:title="resetLesson"
+        android:id="@+id/menu_restart"
+        android:onClick="resetLesson"
+        android:icon="@drawable/ic_autorenew_black_24dp"
+        app:showAsAction="ifRoom"
+
+        />
+
+
+
+
+
+    <item
+        android:onClick="deleteCategory"
+        android:id="@+id/menu_delete_all"
+    android:title="deleteCategory"
+     />
+
+
+
+
+</menu>
