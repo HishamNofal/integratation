@@ -9,6 +9,7 @@ Future improvments should include:
 2- create and add a sqlite german english dictionary databse instead of scraping the web for transltion. 
 3- add animation
 4- improve UI & UX
+5- clean the code
 </h6>
 
 
