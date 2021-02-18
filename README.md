@@ -4,8 +4,9 @@ android-IntegrationApp
 Integration is a flashcards android application tailored for my personal use, and aims to facilitate learning the german language.
 
 <h6>
-Future improvments should include:
-1- scyncing and backing up user preferences on a server. <br>
+Future improvments should include:<br>
+
+1- scyncing and backing up user preferences<br> on a server. <br>
 2- create and add a sqlite german english dictionary databse instead of scraping the web for transltion. <br>
 3- add animation. <br>
 4- improve UI & UX. <br>
