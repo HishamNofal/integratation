@@ -5,11 +5,11 @@ Integration is a flashcards android application tailored for my personal use, an
 
 <h6>
 Future improvments should include:
-1- scyncing and backing up user preferences on a server. 
-2- create and add a sqlite german english dictionary databse instead of scraping the web for transltion. 
-3- add animation
-4- improve UI & UX
-5- clean the code
+1- scyncing and backing up user preferences on a server. <br>
+2- create and add a sqlite german english dictionary databse instead of scraping the web for transltion. <br>
+3- add animation. <br>
+4- improve UI & UX. <br>
+5- clean the code. <br>
 </h6>
 
 
