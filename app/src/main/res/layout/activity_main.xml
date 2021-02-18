@@ -12,6 +12,8 @@
 
 
     <TextView
+        android:visibility="gone"
+
         android:id="@+id/application_title_text_view"
         style="@style/TextAppearance.AppCompat.Large"
         android:layout_width="wrap_content"
@@ -25,6 +27,8 @@
 
 
     <ImageButton
+        android:visibility="gone"
+
         android:id="@+id/switch_lang_image_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,7 +40,9 @@
         app:layout_constraintTop_toTopOf="@+id/menu_restart" />
 
     <ImageButton
-        android:id="@+id/menu_restart"
+        android:visibility="gone"
+
+         android:id="@+id/menu_restart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -47,6 +53,7 @@
 
 
     <ImageButton
+        android:visibility="gone"
         android:id="@+id/menu_delete_all"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -235,6 +242,8 @@
         app:layout_constraintTop_toTopOf="@+id/textView_current_item_position" />
 
     <Switch
+        android:visibility="gone"
+
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -243,6 +252,8 @@
         app:layout_constraintEnd_toStartOf="@+id/switch_lang_image_button" />
 
     <EditText
+        android:visibility="gone"
+
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

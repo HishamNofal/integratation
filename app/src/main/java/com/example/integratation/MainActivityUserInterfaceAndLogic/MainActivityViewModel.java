@@ -24,6 +24,8 @@ public class MainActivityViewModel extends AndroidViewModel {
 
         repo = new IntegrationRepository(application);
 
+
+
     }
 
 
@@ -85,5 +87,25 @@ public class MainActivityViewModel extends AndroidViewModel {
     }
 
 
+   /* void firebase(){
+
+        repo.Firebase();
+    }
+
+
+    */
+
+
+    void insertLangTestItem(LangTestDataStructure langTestDataStructure){
+
+        repo.insertLangTestItem(langTestDataStructure);
+
+    }
+
+    void addNewCategory(String spinnerName){
+
+        repo.addNewCategory(spinnerName);
+
+    }
 
     }

@@ -2,6 +2,7 @@ package com.example.integratation.InsertAndUpdateActivityUserInterfaceAndLogic;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.annotation.SuppressLint;
@@ -57,7 +58,7 @@ public class InsertAndUpdateActivity extends AppCompatActivity {
 
 
         //init view model
-        viewModel = ViewModelProviders.of(this).get(InsertAndUpdateActivityViewModel.class);
+        viewModel = new ViewModelProvider(this).get(InsertAndUpdateActivityViewModel.class);
 
         //init auto complete list
         lessonText = findViewById(R.id.edit_text_lesson);

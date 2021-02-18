@@ -7,6 +7,9 @@
     android:layout_height="match_parent" >
 
     <LinearLayout
+
+        android:visibility="invisible"
+
         android:id="@+id/action_bar_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -21,6 +24,8 @@
 
 
     <TextView
+        android:visibility="invisible"
+
         android:id="@+id/refreshMessage"
         style="@style/TextAppearance.AppCompat.Large"
         android:layout_width="wrap_content"
@@ -33,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <WebView
-
+android:visibility="gone"
         android:id="@+id/webview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -106,16 +111,16 @@
         style="@style/TextAppearance.AppCompat.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="#fff"
+        android:background="#0D2DEB"
         android:ems="10"
         android:gravity="center"
         android:inputType="textPersonName"
         android:padding="8dp"
-        android:textColor="#DF6309B1"
+        android:textColor="#D8F9F9F9"
+        app:layout_constraintBottom_toTopOf="@+id/webview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/webview" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

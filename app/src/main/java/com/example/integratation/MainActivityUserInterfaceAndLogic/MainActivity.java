@@ -26,19 +26,27 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.example.integratation.Constants;
+import com.example.integratation.DB.Realtimedb;
 import com.example.integratation.DB.TestCategoriesDBElements.TestCategoriesDataStructure;
 import com.example.integratation.DB.LangTestDBElements.LangTestDataStructure;
 import com.example.integratation.InsertAndUpdateActivityUserInterfaceAndLogic.InsertAndUpdateActivity;
+import com.example.integratation.InsertAndUpdateActivityUserInterfaceAndLogic.InsertAndUpdateActivityViewModel;
 import com.example.integratation.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
@@ -65,7 +73,8 @@ public class MainActivity extends AppCompatActivity {
     private int lockRangeUp,lockRangeDown;
     private ToggleButton lockSwitch;
     private boolean lockScroll;
-
+    private InsertAndUpdateActivityViewModel viewModel;
+    private int count;
 
 
     @Override
@@ -73,10 +82,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //firebase
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef = database.getReference("Realtimedb");
+         //Realtimedb rt = new Realtimedb("d","e",false);
+         //myRef.push().setValue(rt);
+
+
+
 
         //shared pref
         sharedPreferences =  getSharedPreferences("spinner", Context.MODE_PRIVATE);
         last = sharedPreferences.getInt("last",0);
+        count = sharedPreferences.getInt("count",0);
 
         lockSwitch = findViewById(R.id.lock_switch);
 
@@ -117,8 +135,76 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //view model init
+
+
         mainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
 
+
+        myRef.orderByChild("h").equalTo(false).addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+               int fast= -1;
+
+               int counter=20;
+
+              myRef.removeEventListener(this);
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+
+                    if (counter >= 20){
+                        counter=0;
+                        fast++;
+
+                        mainActivityViewModel.addNewCategory(count+fast+"");
+
+
+                    }
+                    counter++;
+
+
+                    Realtimedb rr = dataSnapshot.getValue(Realtimedb.class);
+
+                    String key = (String) dataSnapshot.getKey();
+
+                    rr.setH(true);
+
+                    Map<String, Object> ays = rr.toMap();
+
+                    Map<String, Object> childUpdates = new HashMap<>();
+
+                    childUpdates.put(key, ays);
+
+
+                    LangTestDataStructure xx = new LangTestDataStructure(rr.getD(), rr.getE());
+
+                    xx.setCategoryName(count+fast+"");
+
+
+
+                    mainActivityViewModel.insertLangTestItem(xx);
+
+
+                    Log.d("Tag", "" + rr.getE());
+
+                    myRef.updateChildren(childUpdates);
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+        // mainActivityViewModel.firebase();
 
         //spinner init
         categorySpinner = findViewById(R.id.spinner_lessons);
@@ -133,9 +219,14 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onChanged(List<TestCategoriesDataStructure> strings) {
 
+
+
+
                     list.clear();
                     list.addAll(strings);
                     categorySpinnerAdapter.notifyDataSetChanged();
+
+                    sharedPreferences.edit().putInt("count",list.size()).apply();
 
                     Log.v("MainActivity.Log","spinnerLiveDataAccessedLast:"+last);
 

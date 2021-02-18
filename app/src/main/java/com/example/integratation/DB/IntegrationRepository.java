@@ -2,20 +2,30 @@ package com.example.integratation.DB;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
 import com.example.integratation.DB.TestCategoriesDBElements.TestCategoriesDao;
 import com.example.integratation.DB.TestCategoriesDBElements.TestCategoriesDataStructure;
 import com.example.integratation.DB.LangTestDBElements.LangTestDao;
 import com.example.integratation.DB.LangTestDBElements.LangTestDataStructure;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 public class IntegrationRepository {
 
     private final TestCategoriesDao testCategoriesDao;
+   // private final DatabaseReference myRef;
     private LangTestDao langTestDao;
 
 
@@ -27,6 +37,9 @@ public class IntegrationRepository {
 
         langTestDao = database.langTestDao();
         testCategoriesDao = database.categoriesDao();
+
+
+
 
     }
 
@@ -80,6 +93,9 @@ public class IntegrationRepository {
 
         new AddNewCategoryAsyncTask(testCategoriesDao).execute(categoryName);
     }
+
+
+
 
 
    public  List<LangTestDataStructure> getAllCategoryLangTestItemsInRandOrder(String categoryName)
